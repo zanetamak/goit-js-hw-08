@@ -58,5 +58,4 @@ const sentForm = eventSent => {
     form.reset(); // wyczyszczanie pól, przygotowanie do ponownego uzycia 
 };
 form.addEventListener('submit', sentForm);
-
 // Pusty nawias () - Anonimowa funkcja:
