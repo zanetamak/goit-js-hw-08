@@ -40,11 +40,9 @@ const sentForm = eventSent => {
     const emailValue = email.value.trim(); 
     const messageValue = message.value.trim();
 
-    if (emailValue && messageValue) {
-} else {
-    alert('All form fields are required.');
-    return;
-}
+    if (emailValue === "" || messageValue === "") {
+ return  alert('All form fields are required.');
+} 
     const objectData = { //dane wprowadzone przez uzytkownika
         email: email.value,
         message: message.value,
