@@ -22,7 +22,6 @@ const throttledSave = throttle((data) => {
     localStorage.setItem(localStorageKey, JSON.stringify(data)); // zapisywanie ciągu znaków w formacie JSON w localStorage
   }, 500);
 
-
   // obsługa  input
 function saveData(evt) { // evt - obiekt zdarzenia. przyjmuje zdarzenie, dzięki czemu uzyskuje dostęp do zmienionego elementu formularza (czyli evt.target)
     formState[evt.target.name] = evt.target.value; // nazwa pola = wartość pola. aktualizacaj pól w obiekcie formState na nową wartość
@@ -37,7 +36,16 @@ const sentForm = eventSent => {
     const {
         elements: { email, message }, // destrukturyzacja, aby mieć dostęp do el. formularza
     } = eventSent.currentTarget; // odnosi się do elementu, który jest celem zdarzenia, czyli formularza.
-    const objectData = { //dane wprowadzone przez uytkownika
+// Usunięcie białych znaków 
+    const emailValue = email.value.trim(); 
+    const messageValue = message.value.trim();
+
+    if (emailValue && messageValue) {
+} else {
+    alert('All form fields are required.');
+    return;
+}
+    const objectData = { //dane wprowadzone przez uzytkownika
         email: email.value,
         message: message.value,
     };
@@ -50,3 +58,5 @@ const sentForm = eventSent => {
     form.reset(); // wyczyszczanie pól, przygotowanie do ponownego uzycia 
 };
 form.addEventListener('submit', sentForm);
+
+// Pusty nawias () - Anonimowa funkcja:
